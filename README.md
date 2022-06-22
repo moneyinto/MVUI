@@ -1,24 +1,5 @@
-# mvui
+# MVUI
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 参考学习[Element-Plus](https://github.com/element-plus/element-plus)的写法
+- ## 学习vue3新的使用方法 锻炼自己写组件的能力
+- ## 写一套UI组件库 为了特殊定制化开发方便修改
