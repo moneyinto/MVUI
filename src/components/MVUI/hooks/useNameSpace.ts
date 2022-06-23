@@ -18,15 +18,23 @@ const _bem = (
     return cls;
 };
 
+const statePrefix = "is-";
+
 export const useNamespace = (block: string) => {
     const namespace = "mv";
     const b = (blockSuffix = "") => _bem(namespace, block, blockSuffix, "", "");
 
     const m = (modifier?: string) => modifier ? _bem(namespace, block, "", "", modifier) : "";
-    
+
+    const is = (name: string, ...args: [boolean | undefined] | []) => {
+        const state = args.length >= 1 ? args[0]! : true;
+        return name && state ? `${statePrefix}${name}` : "";
+    };
+
     return {
         b,
-        m
+        m,
+        is
     };
 };
 
