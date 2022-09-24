@@ -5,5 +5,11 @@ import router from "./router";
 import store from "./store";
 import MVUI from "./components/MVUI";
 import "@/assets/styles/global.scss";
+import plugins from "./plugins";
 
-createApp(App).use(store).use(router).use(MVUI).mount("#app");
+const app = createApp(App);
+app.use(store)
+    .use(plugins)
+    .use(router)
+    .use(MVUI)
+    .mount("#app");
