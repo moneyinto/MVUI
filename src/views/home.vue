@@ -1,43 +1,68 @@
 <template>
-    <div class="home">
-        <mv-button>Default</mv-button>
-        <mv-button type="primary">Primary</mv-button>
-        <mv-button type="success">Success</mv-button>
-        <mv-button type="info">Info</mv-button>
-        <mv-button type="warning">Warning</mv-button>
-        <mv-button type="danger">Danger</mv-button>
-
-        <br />
-        <br />
-
-        <mv-button plain>Default</mv-button>
-        <mv-button type="primary" plain>Primary</mv-button>
-        <mv-button type="success" plain>Success</mv-button>
-        <mv-button type="info" plain>Info</mv-button>
-        <mv-button type="warning" plain>Warning</mv-button>
-        <mv-button type="danger" plain>Danger</mv-button>
-
-        <br />
-        <br />
-        
-        <mv-button round>Default</mv-button>
-        <mv-button type="primary" round>Primary</mv-button>
-        <mv-button type="success" round>Success</mv-button>
-        <mv-button type="info" round>Info</mv-button>
-        <mv-button type="warning" round>Warning</mv-button>
-        <mv-button type="danger" round>Danger</mv-button>
-
-        <br />
-        <br />
-        
-        <mv-button disabled>Default</mv-button>
-        <mv-button type="primary" disabled>Primary</mv-button>
-        <mv-button type="success" disabled>Success</mv-button>
-        <mv-button type="info" disabled>Info</mv-button>
-        <mv-button type="warning" disabled>Warning</mv-button>
-        <mv-button type="danger" disabled>Danger</mv-button>
+    <div class="demo-body">
+        <div class="demo-menu">
+            <div
+                class="demo-menu-item"
+                :class="item.path === route.path && 'active'"
+                v-for="item in menuList"
+                :key="item.path"
+            >
+                {{ item.name }}
+            </div>
+        </div>
+        <div class="demo-content">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+const menuList = ref([
+    {
+        name: "button 按钮",
+        path: "/button"
+    }
+]);
 </script>
+
+<style lang="scss" scoped>
+.demo-body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.demo-menu {
+    width: 220px;
+    padding: 20px 10px;
+    height: 100%;
+    overflow-y: auto;
+    .demo-menu-item {
+        padding: 10px 16px;
+        line-height: 1.5;
+        font-size: 14px;
+        border-radius: 8px;
+        color: #606266;
+        cursor: pointer;
+        &:hover {
+            color: #409eff;
+        }
+        &.active {
+            color: #409eff;
+            background-color: #409eff1a;
+        }
+    }
+}
+
+.demo-content {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+</style>

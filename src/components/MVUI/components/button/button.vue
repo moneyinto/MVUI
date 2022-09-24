@@ -1,13 +1,13 @@
 <template>
     <button
-        class="mv-button"
         :class="[
             ns.b(),
             ns.m(_type),
             ns.is('plain', _plain),
             ns.is('round', _round),
             ns.is('circle', _circle),
-            ns.is('disabled', _disabled)
+            ns.is('disabled', _disabled),
+            ns.is('text', _text)
         ]"
         :disabled="_disabled"
     >
@@ -40,6 +40,10 @@ const props = defineProps({
     disabled: {
         type: Boolean,
         default: false
+    },
+    text: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -49,4 +53,5 @@ const _plain = computed(() => props.plain);
 const _round = computed(() => props.round);
 const _circle = computed(() => props.circle);
 const _disabled = computed(() => props.disabled);
+const _text = computed(() => props.text);
 </script>

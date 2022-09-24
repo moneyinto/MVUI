@@ -27,7 +27,7 @@ export const useNamespace = (block: string) => {
     const m = (modifier?: string) => modifier ? _bem(namespace, block, "", "", modifier) : "";
 
     const is = (name: string, ...args: [boolean | undefined] | []) => {
-        const state = args.length >= 1 ? args[0]! : true;
+        const state = args.length >= 1 ? !!args[0] : true;
         return name && state ? `${statePrefix}${name}` : "";
     };
 
